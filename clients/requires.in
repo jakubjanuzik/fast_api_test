@@ -1,0 +1,7 @@
+fastapi
+black
+databases[postgresql]
+pydantic[dotenv]
+flake8
+isort
+ipdb
