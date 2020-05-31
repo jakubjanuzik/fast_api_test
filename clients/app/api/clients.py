@@ -1,8 +1,8 @@
 from typing import List
-from fastapi import APIRouter, HTTPException
 
-from app.api.models import ClientOut, ClientIn
-from app.api import db_manager
+from app import db_manager
+from app.api.models import ClientIn, ClientOut
+from fastapi import APIRouter, HTTPException
 
 clients = APIRouter()
 
@@ -20,6 +20,13 @@ async def get_client(id: int):
     if not client:
         return HTTPException(status_code=404, detail="Client not found")
     return client
+
+
+@clients.post("/", response_model=ClientIn)
+async def create_client(client: ClientIn):
+    """Post handler used to create client."""
+    last_record_id = await db_manager.create_client(client)
+    return {**client.dict(), "id": last_record_id}
 
 
 @clients.put("/{id}")

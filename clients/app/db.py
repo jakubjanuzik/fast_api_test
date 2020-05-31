@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, MetaData, String, Table, create_engine
 
-from databases import Database
 from app.config import settings
+from databases import Database
 
 DATABASE_URL = (
     f"postgresql://{settings.database_user}:{settings.database_name}"
