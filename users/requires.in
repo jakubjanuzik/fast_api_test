@@ -1,0 +1,11 @@
+fastapi
+black
+databases[postgresql]
+pydantic[dotenv]
+flake8
+isort
+ipdb
+uvicorn
+graphene>=2.0
+pyjwt
+passlib
